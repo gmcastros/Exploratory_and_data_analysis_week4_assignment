@@ -19,5 +19,6 @@ emissions_1999 <- emissions_per_year[emissions_per_year$year ==1999,2]
 emissions_delta_2008_1999 <- emissions_2008 - emissions_1999
 
 #answer: -1411.898
+#Emissions decreased in -1411.898 
 
 
