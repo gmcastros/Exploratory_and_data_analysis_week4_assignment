@@ -6,8 +6,6 @@ SCC <- readRDS("Source_Classification_Code.rds")
 #Question:
 #How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 
-baltimore_data <- NEI[NEI$fips=="24510", ]
-
 #Get the coal sources, the column EI.Sector has the information to filter
 vehicles <- SCC[grep("Veh", SCC$Short.Name),] 
 
@@ -17,7 +15,7 @@ vehicles_baltimore <- merge(x = baltimore_1, y = SCC, by.x="SCC", by.y="SCC")
 
 #We need to group the data at year level. SUM it. 
 # The columns we need are Emissions and year 
-emissions_per_year <- aggregate(Emissions ~ year, vehicles_baltimore, sum)
+emissions_per_year <- aggregate(Emissions ~ year, vehicles_baltimore[vehicles_baltimore$fips=="24510",], sum)
 
 #Use ggplot
 library(ggplot2)
@@ -31,4 +29,4 @@ dev.off()
 emissions_2008 <- emissions_per_year[emissions_per_year$year ==2008,2]
 emissions_1999 <- emissions_per_year[emissions_per_year$year ==1999,2]
 emissions_delta_2008_1999 <- emissions_2008 - emissions_1999
-#answer: -71953.21 decreased
+#answer: -258.5445 decreased
