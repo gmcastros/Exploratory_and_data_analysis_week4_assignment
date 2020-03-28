@@ -16,6 +16,7 @@ library(ggplot2)
 #draw emissions per year, over year, emissions and color by type, each color line
 plot3 <- ggplot(emissions_per_year, aes(year, Emissions, color=type))
 plot3 <- plot3 + geom_line() + xlab("Year") + ylab("Total Emissions")
+png("plot1.png", width=480, height = 480)
 print(plot3)
-
+dev.off()
 #answer: All source types appear to have decreased from 1999 to 2008 in Baltimore, except the “POINT” type source
