@@ -10,7 +10,7 @@ baltimore_data <- NEI[NEI$fips=="24510", ]
 
 #We need to group the data at year level. SUM it. The columns we need are Emissions and year 
 emissions_per_year <- aggregate(Emissions ~ year, baltimore_data, sum)
-png("plot1.png", width=480, height = 480)
+png("plot2.png", width=480, height = 480)
 with (emissions_per_year,plot( x = year, y = Emissions, xlab="Year",ylab="Total Emissions", pch = 19, lwd=3, col="blue"))
 dev.off()
 
